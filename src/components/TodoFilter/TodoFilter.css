@@ -1,0 +1,100 @@
+.todo-filter {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.todo-filter-button {
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.todo-filter-button.all {
+  border-color: #30324b;
+  background-color: #ffffff;
+  color: #30324b;
+}
+
+.todo-filter-button.all:hover {
+  border-color: #30324b;
+  background-color: #575a84;
+  color: #ffffff;
+}
+
+.todo-filter-button.all.active {
+  background-color: #30324b;
+  color: #ffffff;
+  border-color: #30324b;
+}
+
+.todo-filter-button.all.focus {
+  border-color: #a4a4a4;
+  background-color: #30324b;
+  color: #ffffff;
+}
+
+.todo-filter-button.completed {
+  border-color: #6ad400;
+  background-color: #ffffff;
+  color: #6ad400;
+}
+
+.todo-filter-button.completed:hover {
+  border-color: #6ad400;
+  background-color: #ceff9d;
+  color: #6ad400;
+}
+
+.todo-filter-button.completed.active {
+  background-color: #6ad400;
+  border-color: #6ad400;
+  color: #ffffff;
+}
+
+.todo-filter-button.completed.focus {
+  background-color: #6ad400;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.todo-filter-button.incomplete {
+  background-color: #ffffff;
+  color: #ff2f2f;
+  border-color: #ff2f2f;
+}
+
+.todo-filter-button.incomplete:hover {
+  border-color: #ff2f2f;
+  background-color: #ffb8b8;
+  color: #ff2f2f;
+}
+
+.todo-filter-button.incomplete.active {
+  background-color: #ff2f2f;
+  color: #ffffff;
+  border-color: #ff2f2f;
+}
+
+.todo-filter-button.incomplete.focus {
+  background-color: #ff2f2f;
+  color: #ffffff;
+  border-color: #ffb8b8;
+}
+
+@media (min-width: 768px) {
+  .todo-filter {
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .todo-filter-button {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+}

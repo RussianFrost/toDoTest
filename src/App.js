@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "./App.css";
+import TodoInput from "./components/TodoInput/TodoInput";
+import TodoFilter from "./components/TodoFilter/TodoFilter";
+import TodoList from "./components/TodoList/TodoList";
+import { FilterType } from "./utils/filterTypes";
 
-function App() {
+const App = () => {
+  const [activeFilter, setActiveFilter] = useState(FilterType.ALL);
+  const [editingTodoId, setEditingTodoId] = useState(null);
+  const todos = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    savedTodos.forEach((todo) => dispatch({ type: "ADD_TODO", payload: todo }));
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1 className="app-title">Список дел</h1>
+      <TodoInput
+        editingTodoId={editingTodoId}
+        setEditingTodoId={setEditingTodoId}
+      />
+      <TodoFilter
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+      />
+      <TodoList
+        todos={todos}
+        filter={activeFilter}
+        setEditingTodoId={setEditingTodoId}
+      />
     </div>
   );
-}
+};
 
 export default App;
